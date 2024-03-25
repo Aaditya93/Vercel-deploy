@@ -177,12 +177,12 @@ const uploadfolder = (id) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.uploadfolder = uploadfolder;
 const uploadFile = (fileName, localFilePath) => __awaiter(void 0, void 0, void 0, function* () {
+    const updatedFileName = fileName.replace("output/", "dist/");
     const fileContent = fs_1.default.readFileSync(localFilePath);
     const response = yield s3.upload({
         Body: fileContent,
         Bucket: bucketName,
-        Key: fileName,
+        Key: updatedFileName,
     }).promise();
-    console.log(response);
 });
 exports.uploadFile = uploadFile;

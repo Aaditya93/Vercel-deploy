@@ -178,11 +178,12 @@ export const uploadfolder = async (id: string) => {
 }
 
 export const uploadFile = async (fileName: string, localFilePath: string) => {
+  const updatedFileName = fileName.replace("output/", "dist/");
   const fileContent = fs.readFileSync(localFilePath);
   const response = await s3.upload({
       Body: fileContent,
       Bucket: bucketName,
-      Key: fileName,
+      Key: updatedFileName,
   }).promise();
-  console.log(response);
+
 }
