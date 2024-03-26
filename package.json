@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/mysql": "^2.15.26",
     "aws-sdk": "^2.1584.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "mysql": "^2.18.1"
   }
 }
