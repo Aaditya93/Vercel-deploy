@@ -29,15 +29,18 @@ function main() {
                 files.forEach((file) => __awaiter(this, void 0, void 0, function* () {
                     yield (0, aws_1.uploadFile)(file.slice(__dirname.length + 1), file);
                 }));
+                (0, db_1.deployedDone)(message, true, (err, result) => {
+                    if (err) {
+                        console.error('Error adding entry:', err);
+                    }
+                    else {
+                        console.log('Entry added successfully.');
+                    }
+                });
             }
-            yield (0, db_1.deployedDone)(message, true, (err, result) => {
-                if (err) {
-                    console.error('Error adding entry:', err);
-                }
-                else {
-                    console.log('Entry added successfully.');
-                }
-            });
+            else {
+                console.log("Message is null or falsy, skipping deployment.");
+            }
             console.log("done");
         }
     });
